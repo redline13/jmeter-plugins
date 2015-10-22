@@ -20,6 +20,7 @@ import java.util.logging.Level;
 
 public class ChromeDriverConfig extends WebDriverConfig<ChromeDriver> {
 
+    private static final String redline = "RedLine13";
     private static final long serialVersionUID = 100L;
     private static final Logger LOGGER = LoggingManager.getLoggerForClass();
     private static final String CHROME_SERVICE_PATH = "ChromeDriverConfig.chromedriver_path";
@@ -31,9 +32,12 @@ public class ChromeDriverConfig extends WebDriverConfig<ChromeDriver> {
     }
 
     public String getChromeDriverPath() {
-        // TODO : Think through graceful overrides 
-        // return getPropertyAsString(CHROME_SERVICE_PATH);
-        return "chromedriver";
+        String s = getPropertyAsString(REDLINE);
+        if (s.isEmpty()) {
+            return getPropertyAsString(CHROME_SERVICE_PATH);
+        } else {
+            return "chromedriver";
+        }        
     }
 
     Capabilities createCapabilities() {
