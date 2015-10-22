@@ -31,7 +31,9 @@ public class ChromeDriverConfig extends WebDriverConfig<ChromeDriver> {
     }
 
     public String getChromeDriverPath() {
-        return getPropertyAsString(CHROME_SERVICE_PATH);
+        // TODO : Think through graceful overrides 
+        // return getPropertyAsString(CHROME_SERVICE_PATH);
+        return "chromedriver";
     }
 
     Capabilities createCapabilities() {
@@ -40,7 +42,7 @@ public class ChromeDriverConfig extends WebDriverConfig<ChromeDriver> {
         LoggingPreferences logPrefs = new LoggingPreferences();
 		logPrefs.enable(LogType.BROWSER, Level.ALL);
 		capabilities.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
-        
+
 
         if(isAndroidEnabled()) {
             Map<String, String> chromeOptions = new HashMap<String, String>();
