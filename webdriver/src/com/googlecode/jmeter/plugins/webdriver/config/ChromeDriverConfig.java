@@ -20,7 +20,7 @@ import java.util.logging.Level;
 
 public class ChromeDriverConfig extends WebDriverConfig<ChromeDriver> {
 
-    private static final String redline = "RedLine13";
+    private static final String REDLINE = "RedLine13";
     private static final long serialVersionUID = 100L;
     private static final Logger LOGGER = LoggingManager.getLoggerForClass();
     private static final String CHROME_SERVICE_PATH = "ChromeDriverConfig.chromedriver_path";
