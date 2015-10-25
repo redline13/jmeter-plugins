@@ -18,6 +18,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 
+import org.apache.jmeter.util.JMeterUtils;
+
 public class ChromeDriverConfig extends WebDriverConfig<ChromeDriver> {
 
     private static final String REDLINE = "RedLine13";
@@ -32,12 +34,12 @@ public class ChromeDriverConfig extends WebDriverConfig<ChromeDriver> {
     }
 
     public String getChromeDriverPath() {
-        String s = getPropertyAsString(REDLINE);
-        if (s.isEmpty()) {
+        boolean isRedline = JMeterUtils.getPropDefault(REDLINE,false);
+        if (!isRedline) {
             return getPropertyAsString(CHROME_SERVICE_PATH);
         } else {
             return "chromedriver";
-        }        
+        }
     }
 
     Capabilities createCapabilities() {
