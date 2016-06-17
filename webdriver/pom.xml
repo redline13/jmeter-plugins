@@ -38,10 +38,11 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java-version>1.6</java-version>
+        <java-version>1.8</java-version>
         <selenium.version>2.52.0</selenium.version>
-        <powermock.version>1.5</powermock.version>
-        <cobertura-maven.version>2.5.2</cobertura-maven.version>
+        <powermock.version>1.6.5</powermock.version>
+        <surefire.version>2.12.4</surefire.version>
+        <cobertura-maven.version>2.1.1</cobertura-maven.version>
     </properties>
 
     <repositories>
@@ -339,6 +340,14 @@
                 </executions>
 
             </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>${surefire.version}</version>
+            <configuration>
+                <argLine>-noverify</argLine>
+            </configuration>
+        </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
